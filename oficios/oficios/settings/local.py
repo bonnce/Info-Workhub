@@ -8,9 +8,9 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE':'sql_server.pyodbc',
-        'NAME':'Oficios',
+        'NAME':'OficiosDB',
         'Trusted_Connection':'yes',
-        'HOST':'FERNANDO-PC\SQLEXPRESS',
+        'HOST':'DESKTOP-46OE4ML\SQLEXPRESS',
         'OPTIONS':{
             'driver':'SQL Server Native Client 11.0',
         }
