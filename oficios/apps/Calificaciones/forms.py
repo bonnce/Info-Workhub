@@ -1,5 +1,7 @@
 from django.forms import ModelForm
+from .models import Calificaciones
 
 class CalificacionesForm(ModelForm):
     class Meta:
-        pass
+        model=Calificaciones
+        fields='__all__'
