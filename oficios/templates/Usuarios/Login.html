@@ -1,0 +1,21 @@
+{% extends 'Home.html' %}
+
+{% block title %}
+
+<title>Login</title>
+
+{% endblock title %}
+
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.errors}}
+    <input type="text" name="username" placeholder="Usuario">
+    <input type="password" name="password" placeholder="Contraseña">
+    <input type="submit" name="" value="Ingresar">
+
+</form>
+
+{% endblock content %}
