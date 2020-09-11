@@ -7,6 +7,43 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
         {% block title %} <title>Base</title>{% endblock %}
+        <style>
+            #form {
+                width: 250px;
+                margin: 0 auto;
+                height: 50px;
+            }
+    
+            #form p {
+                text-align: center;
+            }
+    
+            #form label {
+                font-size: 20px;
+            }
+    
+            input[type="radio"] {
+                display: none;
+            }
+    
+            label {
+                color: grey;
+            }
+    
+            .calificacion {
+                direction: rtl;
+                unicode-bidi: bidi-override;
+            }
+    
+            label:hover,
+            label:hover~label {
+                color: orange;
+            }
+    
+            input[type="radio"]:checked~label {
+                color: orange;
+            }
+        </style>
     </head>
     <body>
         {% block nav %} {% endblock %}

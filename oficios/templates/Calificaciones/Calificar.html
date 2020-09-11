@@ -5,28 +5,27 @@
 {% endblock title %}
 
 {% block content %}
-<h2>Aqui vas a Calificar</h2>
-<div>
-    <form action="" method="post">{% csrf_token %}
-        input
-    </form>
-</div>
-<
+<h2>Aqui vas a Calificar y Comentar</h2>
+<form action="" method="post">
+	{% csrf_token %}
+	<table>
+		{{form}}
+	</table>
+	<input type="submit" value="Calificar" />
+</form>
+
 <!-- <form method="POST">{% csrf_token %}
-    <p class="calificacion">
-      <input id="radio1" type="radio" name="estrellas" value="5">
-      <label for="radio1">★</label>
-      <input id="radio2" type="radio" name="estrellas" value="4">
-      <label for="radio2">★</label>
-      <input id="radio3" type="radio" name="estrellas" value="3">
-      <label for="radio3">★</label>
-      <input id="radio4" type="radio" name="estrellas" value="2">
-      <label for="radio4">★</label>
-      <input id="radio5" type="radio" name="estrellas" value="1"><!--
-      <label for="radio5">★</label>
-    </p>
-  </form>-->
-{% endblock content %} 
-
-
-
+	<p class="calificacion">
+		<input id="radio1" type="radio" name="estrellas" value="5">
+		<label for="radio1">★</label>
+		<input id="radio2" type="radio" name="estrellas" value="4">
+		<label for="radio2">★</label>
+		<input id="radio3" type="radio" name="estrellas" value="3">
+		<label for="radio3">★</label>
+		<input id="radio4" type="radio" name="estrellas" value="2">
+		<label for="radio4">★</label>
+		<input id="radio5" type="radio" name="estrellas" value="1">
+		<label for="radio5">★</label>
+	</p>
+	</form>-->
+	{% endblock content %}
