@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 class Calificaciones(models.Model):
 
-    calificacion = models.DecimalField(max_digits=1, decimal_places=None)
-    comentario = models.CharField(max_length = 150)
+    calificacion = models.IntegerField(default=None)
+    comentario = models.TextField(default=None)
     
     def __str__(self):
         return self.calificacion
     
-    pass
+ 
