@@ -3,4 +3,6 @@ from . import views
 
 app_name='Comentarios'
 
-urlpatterns = []
+urlpatterns = [
+    path('Mostrar',views.Mostrar,name='Mostrar')
+]
