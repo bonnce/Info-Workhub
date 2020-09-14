@@ -1,5 +1,6 @@
 from django.db import models
 from ..Usuarios.models import Usuarios
+from ..Zonas.models import Zonas
 # Create your models here.
 
 class Rubros(models.Model):
@@ -13,6 +14,7 @@ class Trabajadores(models.Model):
     especialidad= models.CharField(max_length=50)
     certificado = models.ImageField(upload_to='Trabajadores',null=True,blank=True)
     rubro = models.ForeignKey(Rubros,null=True,on_delete=models.SET_NULL,related_name='filtro_rubro')
+    zonas = models.ManyToManyField(Zonas,related_name='Opera')
 
 def __str__(self):
     return self.usuario.username
