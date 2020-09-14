@@ -9,20 +9,77 @@
     </head>
     <body>
         {% block nav %}
-        <nav>
-            <li>
-                <a href="{% url 'login' %}">Login</a>
-            </li>
+        <!--Barra de navegacion-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'Home' %}">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">                            
+                            <a class="nav-link" href="
+                            {% url 'Usuarios:perfil' %}">                
+                            Hola {{user.username}}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#RegistroModal">
+                                Registrarse
+                            </button>
+                    {% endif %} 
+                </ul>
+            </div>           
         </nav>
         {% endblock %}
         
-        {% block content %} {% endblock %}
-        
+        {% block content %} 
+                 
+        {% endblock %}
+        <!--Modal de registro-->
+        <div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="Registro" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <p>Es usted un trabajador?</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary registro" id='TrabajadoresR'
+                data-url="{% url 'Trabajadores:registro' %}">Si</button>
+                <button type="button" class="btn btn-secondary registro" id='StalkersR'
+                data-url="{% url 'Stalkers:registro' %}">No</button>
+                </div>
+            </div>
+            </div>
+        </div>   
+
+        <!--Zona de scripts-->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  <!-- JQUERY HERE -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        {% block js %} {% endblock %}
-
-
+        {% block js %} 
+            <script>
+                $(function(){
+                    var registro=function(){
+                        window.location.href=$(this).attr('data-url')
+                    };
+                    $('#RegistroModal').on('click','.registro',registro)
+                })
+            </script>
+        {% endblock %}
     </body>
 </html>
