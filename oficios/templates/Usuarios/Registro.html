@@ -1,0 +1,10 @@
+{% extends "Base.html" %}
+{% block content %}
+<h1>Registrate ya {{usuario}}!!!</h1>
+{{form.errors}}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}    
+    {{form.as_p}}
+    <input type="submit" value="Registrarse">
+</form>
+{% endblock content %}
