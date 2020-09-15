@@ -4,7 +4,7 @@ from ..Trabajadores.models import Trabajadores
 class Calificaciones(models.Model):
     calificacion = models.PositiveSmallIntegerField()
     comentario = models.TextField(default=None)
-    trabajador = models.ForeignKey(Trabajadores,on_delete=models.CASCADE,related_name='calificado')
+    trabajador = models.ForeignKey(Trabajadores,on_delete=models.CASCADE,related_name='es_calificado')
     
     def __str__(self):
         return self.calificacion
