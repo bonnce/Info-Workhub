@@ -1,3 +1,18 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,get_object_or_404
+from django.views import generic
+from django.urls import reverse_lazy
+from . import models
+from . import forms
 # Create your views here.
+
+class Registro(generic.CreateView):
+    template_name='Usuarios/Registro.html'
+    model=models.Trabajadores
+    form_class=forms.TrabajadoresForm
+    success_url=reverse_lazy('Home')
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['usuario'] = 'Trabajador'
+        return context   
