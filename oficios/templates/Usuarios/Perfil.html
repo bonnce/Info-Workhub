@@ -1,0 +1,41 @@
+{% extends "Base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="tab-header mx-auto">
+                    <h1>PERFIL</h1>
+                </div>
+            </div>            
+        </div>        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="tab-content mx-auto" id="myTabContent">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h3>Hola {{user.username}}</h3>
+                        </div>
+                    </div>
+                    {% for label,datos in user.ObtenerDatos.items  %}
+                        {% if datos %}
+                            <div class="row">            
+                                <div class="col-md-4">
+                                    <label>{{label}}: </label>
+                                </div>                
+                                <div class="col-md-4">
+                                    {% if datos.url %}
+                                        <img src="{{datos.url}}" alt="">
+                                    {% else %}                    
+                                    <p>{{datos}}</p>
+                                    {% endif %}
+                                </div>
+                            </div>    
+                        {% endif %}  
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
