@@ -5,4 +5,5 @@ app_name='Trabajadores'
 
 urlpatterns = [
     path('Registro',views.Registro.as_view(),name='registro'),
+    path('Listar',views.Listar.as_view(),name='Listar'),
 ]

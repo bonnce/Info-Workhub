@@ -1,5 +1,9 @@
 from django.forms import ModelForm
+from .models import Comentarios
 
-class ComentariosForm(ModelForm):
+class Comentarios(ModelForm):
     class Meta:
-        pass
+        model = Comentarios
+
+        fields ='__all__'
+    
