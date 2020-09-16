@@ -4,4 +4,4 @@ from .models import Calificaciones
 class CalificacionesForm(ModelForm):
     class Meta:
         model=Calificaciones
-        fields='__all__'
+        fields=['calificacion','comentario']
