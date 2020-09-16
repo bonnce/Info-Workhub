@@ -1,6 +1,7 @@
 {% extends "Base.html" %}
+{% load usuario_url %}
 
-{% block content %}
+{% block content %}    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 mx-auto">
@@ -17,6 +18,14 @@
                             <h3>Hola {{user.username}}</h3>
                         </div>
                     </div>
+                    <div class="row">            
+                        <div class="col-md-4">
+                            <button id="EditarPerfil" class="btn btn-warning"
+                            data-url="{% url user|ObtenerUrl:'editarPerfil' user.pk %}">
+                                Editar
+                            </button>
+                        </div>
+                    </div>
                     {% for label,datos in user.ObtenerDatos.items  %}
                         {% if datos %}
                             <div class="row">            
@@ -31,7 +40,7 @@
                                     {% endif %}
                                 </div>
                             </div>    
-                        {% endif %}  
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
