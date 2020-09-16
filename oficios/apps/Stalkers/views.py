@@ -3,6 +3,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from . import models
 from . import forms
+from ..Usuarios.models import Usuarios
 # Create your views here.
 
 class Registro(generic.CreateView):
@@ -17,3 +18,9 @@ class Registro(generic.CreateView):
         # Add in a QuerySet of all the books
         context['usuario'] = 'Buscador'
         return context
+
+class EditarPerfil(generic.edit.UpdateView):
+    template_name='Usuarios/EditarPerfil.html'
+    model=models.Usuarios
+    form_class=forms.EditarForm
+    success_url=reverse_lazy('Usuarios:perfil')

@@ -115,10 +115,11 @@
         {% block js %} 
             <script>
                 $(function(){
-                    var registro=function(){
+                    var go_to=function(){
                         window.location.href=$(this).attr('data-url')
                     };
-                    $('#RegistroModal').on('click','.registro',registro)
+                    $('#RegistroModal').on('click','.registro',go_to);
+                    $('#EditarPerfil').on('click',go_to)
                 })
             </script>
         {% endblock %}
