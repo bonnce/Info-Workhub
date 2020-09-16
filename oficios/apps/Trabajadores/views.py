@@ -13,14 +13,12 @@ class Registro(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['usuario'] = 'Trabajador'
-<<<<<<< HEAD
         return context   
 
 class Listar(generic.ListView):
     model = models.Trabajadores
     template_name = "Usuarios/Trabajadores/Listar.html"
-=======
-        return context
+
 
 #Se usa el modelo Usuario ya que es el modelo usado por el form y el modelo que se instancia
 #Para que django se ocupe de lo complicado
@@ -29,4 +27,3 @@ class EditarPerfil(generic.edit.UpdateView):
     model=Usuarios
     form_class=forms.EditarForm
     success_url=reverse_lazy('Usuarios:perfil')
->>>>>>> e4dba7ca57cd4efe659a07795059c758ca9187e5
