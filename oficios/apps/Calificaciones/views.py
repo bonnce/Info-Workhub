@@ -4,8 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CalificacionesForm
 from .models import Calificaciones
 
-class Calificar(CreateView):
+class Calificar(LoginRequiredMixin,CreateView):
     model=Calificaciones
     form_class=CalificacionesForm
     template_name='Calificaciones/Calificar.html'
-    succes_url=reverse_lazy('Home')
+    success_url=reverse_lazy('Home')
