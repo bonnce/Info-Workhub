@@ -8,3 +8,6 @@ class Comentarios(models.Model):
     descripcion = models.TextField()
     trabajador = models.ForeignKey(Trabajadores,on_delete=models.CASCADE,related_name='comentado')
     stalker = models.ForeignKey(Stalkers,on_delete=models.CASCADE,related_name='comento')
+
+    def __str__(self):
+        return 'Comentario'+self.pk

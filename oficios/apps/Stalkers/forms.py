@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django import forms
 from .models import Stalkers
 from ..Usuarios.models import Usuarios
@@ -17,3 +17,8 @@ class StalkersForm(UserCreationForm):
         Stalkers.objects.create(usuario=usuario)
 
         return usuario
+
+class EditarForm(UserChangeForm):
+    class Meta:
+        model=Usuarios
+        fields=['first_name','last_name','username','email','phone','address']
