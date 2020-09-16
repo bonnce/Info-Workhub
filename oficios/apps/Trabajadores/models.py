@@ -1,10 +1,10 @@
 from django.db import models
 from ..Usuarios.models import Usuarios
 from ..Zonas.models import Zonas
-# Create your models here.
 
 class Rubros(models.Model):
     nombre=models.CharField(max_length=20)
+    
     def __str__(self):
         return self.nombre
 
@@ -16,5 +16,5 @@ class Trabajadores(models.Model):
     rubro = models.ForeignKey(Rubros,null=True,on_delete=models.SET_NULL,related_name='filtro_rubro')
     zonas = models.ManyToManyField(Zonas,related_name='Opera')
 
-def __str__(self):
-    return self.usuario.username
+    def __str__(self):
+        return '%s %s'%(self.usuario.first_name,self.usuario.last_name)
