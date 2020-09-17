@@ -8,9 +8,14 @@
     <!-- Display Objects -->
     <li>{{ object.usuario }}</li> 
     <li>{{ object.especialidad }}</li> 
+<<<<<<< HEAD
     <!-- <li></li><img src="{{object.certificado.url}}" alt=""></li> -->
     <li><a href="{% url 'Comentarios:Comentar' %}">COMENTAR</a></li>
     <li><a href="{% url 'Calificaciones:Calificar' object.id %}">CALIFICAR</a></li>
+=======
+    <li></li><img src="{{object.certificado.url}}" alt=""></li>
+    <li><a href="{% url 'Comentarios:Comentar' object.pk %}">COMENTAR</a></li>
+>>>>>>> 8951405b5393d6353910520f4ec72872fb7558b8
     <hr/> 
     <!-- If objet_list is empty  -->
     {% empty %} 
