@@ -5,5 +5,5 @@ app_name='Comentarios'
 
 urlpatterns = [
     path('Mostrar',views.Mostrar,name='Mostrar'),
-    path('Comentar',views.Comentar.as_view(), name='Comentar'),
+    path('Comentar/<str:pkW>/<str:pkS>',views.Comentar.as_view(), name='Comentar'),
 ]

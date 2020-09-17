@@ -9,7 +9,7 @@
     <li>{{ object.usuario }}</li> 
     <li>{{ object.especialidad }}</li> 
     <li></li><img src="{{object.certificado.url}}" alt=""></li>
-    <li><a href="{% url 'Comentarios:Comentar' %}">COMENTAR</a></li>
+    <li><a href="{% url 'Comentarios:Comentar' object.pk user.Stalker.pk %}">COMENTAR</a></li>
     <hr/> 
     <!-- If objet_list is empty  -->
     {% empty %} 
