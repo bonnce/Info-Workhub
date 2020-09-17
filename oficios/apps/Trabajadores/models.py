@@ -14,7 +14,7 @@ class Trabajadores(models.Model):
     especialidad= models.CharField(max_length=50)
     certificado = models.ImageField(upload_to='Trabajadores',null=True,blank=True)
     rubro = models.ForeignKey(Rubros,null=True,on_delete=models.SET_NULL,related_name='filtro_rubro')
-    zonas = models.ManyToManyField(Zonas,related_name='Opera')
+    zonas = models.ManyToManyField(Zonas,related_name='Opera',blank=True)
 
-def __str__(self):
-    return self.usuario.username
+    def __str__(self):
+        return self.usuario.username
