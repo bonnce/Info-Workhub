@@ -10,4 +10,4 @@ class Comentarios(models.Model):
     stalker = models.ForeignKey(Stalkers,on_delete=models.CASCADE,related_name='comento')
 
     def __str__(self):
-        return 'Comentario'+self.pk
+        return 'Comentario'+str(self.pk)
