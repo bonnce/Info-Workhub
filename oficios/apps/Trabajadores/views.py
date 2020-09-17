@@ -13,7 +13,12 @@ class Registro(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['usuario'] = 'Trabajador'
-        return context
+        return context   
+
+class Listar(generic.ListView):
+    model = models.Trabajadores
+    template_name = "Usuarios/Trabajadores/Listar.html"
+
 
 #Se usa el modelo Usuario ya que es el modelo usado por el form y el modelo que se instancia
 #Para que django se ocupe de lo complicado
