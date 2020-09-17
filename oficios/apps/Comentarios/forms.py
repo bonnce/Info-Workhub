@@ -1,15 +1,17 @@
 from django.forms import ModelForm
 from .models import Comentarios
 from django.utils import timezone
+from ..Trabajadores.models import Trabajadores
+from ..Stalkers.models import Stalkers
 
-class Comentarios(ModelForm):
+class ComentariosForm(ModelForm):
     class Meta:
         model = Comentarios
-
-        fields =['descripcion', 'trabajador', 'stalker']
+        fields =['descripcion']
     
-    def save(self):
-        comentario = super().save(commit=False)
+#Redefinicion del save para que devuelva la instancia y no guarde en la base de datos instant
+#Hasta que yo se lo diga
+    def save(self,commit=False):
+        comentario = super().save(commit)
         comentario.fecha_pub = timezone.now()
-        comentario.save()
         return comentario
