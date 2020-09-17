@@ -22,3 +22,8 @@ class Usuarios(AbstractUser):
 		if(self.Trabajador):
 			return self.Worker.pk
 		return self.Stalker.pk
+
+	def ObtenerPerfil(self):
+		if(self.Trabajador):
+			return self.Worker
+		return self.Stalker
