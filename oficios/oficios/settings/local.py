@@ -10,7 +10,7 @@ DATABASES = {
         'ENGINE':'sql_server.pyodbc',
         'NAME':'OficiosDB',
         'Trusted_Connection':'yes',
-        'HOST':'NB_SP_10\SQLEXPRESS',
+        'HOST':'.\INFOGRUPO3',
         'OPTIONS':{
             'driver':'SQL Server Native Client 11.0',
         }
