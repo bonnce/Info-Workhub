@@ -6,11 +6,9 @@
     <!-- Iterate over object_list -->
     {% for object in object_list %} 
     <!-- Display Objects -->
-    <li>{{ object.usuario }}</li> 
+    <li>{{ object.usuario.first_name }}</li> 
     <li>{{ object.especialidad }}</li> 
-    <li><a href="{% url 'Calificaciones:Calificar' object.id %}">CALIFICAR</a></li>
-    <li></li><img src="{{object.certificado.url}}" alt=""></li>
-    <li><a href="{% url 'Comentarios:Comentar' object.pk %}">COMENTAR</a></li>
+    <li><a href="{% url 'Trabajadores:mostrarPerfil' object.pk %}">PERFIL</a></li>
     <hr/> 
     <!-- If objet_list is empty  -->
     {% empty %} 
