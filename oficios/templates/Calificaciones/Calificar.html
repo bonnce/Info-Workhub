@@ -8,9 +8,13 @@
 <h2>Aqui vas a Calificar y Comentar</h2>
 <form method="POST">
 	{% csrf_token %}
-	<table>
-		{{form}}
-	</table>
+	<div class="valoracion">
+		{% for radio in form.calificacion %}
+		<button class="myradio">
+        <i class="fas fa-star">{{radio}}</i>
+    </button>
+    {% endfor %}
+	</div>
 	<input type="submit" value="Calificar" />
 </form>
 
