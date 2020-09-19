@@ -1,0 +1,17 @@
+{% extends 'Base.html' %}
+{% block content %}
+<ul>
+    <li>{{object.usuario.first_name}}</li>
+    <li>{{object.usuario.last_name}}</li>
+    <li>{{object.usuario.email}}</li>
+    <li>{{object.usuario.address}}</li>
+    <li>{{object.usuario.phone}}</li>
+    <li>{{object.promedio}}</li>
+    <li>{{object.especialidad}}</li>
+    <li>{{object.rubro}}</li>
+    <li></li><img src="{{object.certificado.url}}" alt=""></li>
+    <li><a href="{% url 'Calificaciones:Calificar' object.id %}">CALIFICAR</a></li>
+    {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
+    <li><a href="{% url 'Comentarios:Comentar' object.pk %}">COMENTAR</a></li>
+</ul>
+{% endblock content %}
