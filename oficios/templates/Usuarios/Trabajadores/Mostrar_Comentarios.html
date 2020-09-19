@@ -1,0 +1,14 @@
+{% for co in comentario %}
+<table style="width:100%">
+    <tr>
+        <th>stalker</th>
+        <th>descripcion</th>
+        <th>fecha</th>
+    </tr>
+    <tr>
+        <td>{{co.stalker.usuario.first_name}}</td>
+        <td>{{co.descripcion}}</td>
+        <td>{{co.fecha_pub}}</td>        
+    </tr>
+  </table>
+{% endfor %}
