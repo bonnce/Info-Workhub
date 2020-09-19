@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from . import models
 from . import forms
 from ..Usuarios.models import Usuarios
+from ..Comentarios.models import Comentarios
 
 class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
@@ -27,3 +28,12 @@ class EditarPerfil(generic.edit.UpdateView):
     model=Usuarios
     form_class=forms.EditarForm
     success_url=reverse_lazy('Usuarios:perfil')
+
+
+class MostrarPerfil(generic.DetailView):
+    model = models.Trabajadores
+    template_name = 'Usuarios/Trabajadores/MostrarPerfil.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
+        return context
