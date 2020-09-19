@@ -1,14 +1,8 @@
-{% extends "Base.html" %}
-
-{% block content %}
-
-<form method="POST" enctype="multipart/form-data"> 
+<form method="POST" enctype="multipart/form-data" action="{% url 'Comentarios:Comentar' object.pk %}"> 
 
     {% csrf_token %} 
   
-    {{ form.as_p }} 
+    <textarea name="descripcion" cols="40" rows="10" required="" id="id_descripcion"></textarea>
       
-    <input type="submit" value="Enviar"> 
+    <input type="submit" value="Enviar" onclick="window.location.reload()"> 
 </form> 
-
-{% endblock content %}
