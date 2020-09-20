@@ -1,14 +1,8 @@
+{% extends 'Base.html' %}
 {% block content %}
-  {% for o in objetos %}
-  <table style="width:100%">
-    <tr>
-        <th>nombre</th>
-        <th>cp</th>
-    </tr>
-    <tr>
-        <td>{{objetos.nombre}}</td>
-        <td>{{objetos.cp}}</td>       
-    </tr>
-  </table>
-  {% endfor %}
+<ul>
+    <li>{{object.nombre}}</li>
+    <li>{{object.cp}}</li>
+    
+</ul>
 {% endblock content %}
