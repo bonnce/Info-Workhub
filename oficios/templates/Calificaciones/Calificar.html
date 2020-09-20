@@ -1,31 +1,43 @@
-{% extends "base.html" %}
-
-{% block title %}
-<title> Calificar </title>
-{% endblock title %}
-
-{% block content %}
-<h2>Aqui vas a Calificar y Comentar</h2>
-<form method="POST">
+<form method="POST" action="{% url 'Calificaciones:Calificar' object.pk %}">
 	{% csrf_token %}
-	<table>
-		{{form}}
-	</table>
-	<input type="submit" value="Calificar" />
+	<div style="float: left;" class="valoracion">
+		<button type="submit" class="myradio">
+			<label for="id_calificacion_5">
+				5
+				<span class="radio"><input type="radio" name="calificacion" value="5" id="id_calificacion_5" required=""></span>
+			</label>
+		</button>
+		<button type="submit" class="myradio">
+			<label for="id_calificacion_4">
+				4
+				<span class="radio"><input type="radio" name="calificacion" value="4" id="id_calificacion_4" required=""></span>
+			</label>
+		</button>
+		<button type="submit" class="myradio">
+			<label for="id_calificacion_3">
+				3
+				<span class="radio"><input type="radio" name="calificacion" value="3" id="id_calificacion_3" required=""></span>
+			</label>
+		</button>
+		<button type="submit" class="myradio">
+			<label for="id_calificacion_2">
+				2
+				<span class="radio"><input type="radio" name="calificacion" value="2" id="id_calificacion_2" required=""></span>
+			</label>
+		</button>
+		<button type="submit" class="myradio">
+			<label for="id_calificacion_1">
+				1
+				<span class="radio"><input type="radio" name="calificacion" value="1" id="id_calificacion_1" required=""></span>
+			</label>
+		</button>
+		
+		
+		
+		
+	</div>
+	
 </form>
 
-<!-- <form method="POST">{% csrf_token %}
-	<p class="calificacion">
-		<input id="radio1" type="radio" name="estrellas" value="5">
-		<label for="radio1">★</label>
-		<input id="radio2" type="radio" name="estrellas" value="4">
-		<label for="radio2">★</label>
-		<input id="radio3" type="radio" name="estrellas" value="3">
-		<label for="radio3">★</label>
-		<input id="radio4" type="radio" name="estrellas" value="2">
-		<label for="radio4">★</label>
-		<input id="radio5" type="radio" name="estrellas" value="1">
-		<label for="radio5">★</label>
-	</p>
-	</form>-->
-	{% endblock content %}
+
+	
