@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django import forms
 from .models import Trabajadores,Rubros
+from ..Zonas.models import Zonas
 from ..Usuarios.models import Usuarios
 from django.db import transaction
 
@@ -13,11 +14,13 @@ class TrabajadoresForm(UserCreationForm):
     Especialidad=forms.CharField(max_length=50)
     Rubro=forms.ModelChoiceField(Rubros.objects.all())
     Certificado=forms.ImageField(required=False)
+    zonas=forms.ModelMultipleChoiceField(Zonas.objects.all())
     
     class Meta:
         model=Usuarios
         fields=['first_name','last_name','username','password1','password2','email','phone','address']
-
+        
+        
 #Se redefine el save ya que los unicos datos que se guardan son del modelo que se asigna en el Meta
 #Por ende hay que crear un trabajador a mano en este metodo
     @transaction.atomic
@@ -25,9 +28,14 @@ class TrabajadoresForm(UserCreationForm):
         usuario=super().save(commit=False)
         usuario.Trabajador=True
         usuario.save()
-        Trabajadores.objects.create(usuario=usuario,       
+        job = Trabajadores.objects.create(usuario=usuario,       
         especialidad=self.cleaned_data.get('Especialidad'),rubro=self.cleaned_data['Rubro'],
         certificado=self.cleaned_data['Certificado'])
+        zone=self.cleaned_data['zonas']
+        for z in zone:
+            job.zonas.add(z)
+        
+        job.save()
 
         return usuario
 
