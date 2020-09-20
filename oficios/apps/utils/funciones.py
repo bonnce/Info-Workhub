@@ -1,27 +1,47 @@
 from django.core.exceptions import PermissionDenied
+from..Calificaciones.models import Calificaciones
+from ..Trabajadores.models import Trabajadores
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.db.models import Avg
+
 
 class PasajeMixin:
     campos=[]
-    modelo=None
+
 #Redefinicion del post para asignarle el trabajador y stalker antes de guardarlo en la bd cuando ya
 #se completo el formulario
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        print(form)
         if form.is_valid():
             instancia=form.save()
+            print(instancia)
 
             if 'objeto' in self.campos:
-                trabajador=self.modelo.objects.get(pk=kwargs['pk'])
+                trabajador=Trabajadores.objects.get(pk=kwargs['pk'])
                 instancia.trabajador=trabajador
 
             if 'perfil' in self.campos:
                 stalker=request.user.Stalker
-                instancia.stalker=stalker
-            
-            form.save(commit=True)
+                if(type(self).__name__=='Comentar'):
+                    instancia.stalker=stalker
+                    form.save(commit=True)
+                elif(type(self).__name__=='Calificar'):
+                    form.save(commit=True)
+                    instancia.stalker.add(stalker)
+                    avg=Calificaciones.objects.filter(trabajador=trabajador).aggregate(Avg('calificacion'))
+                    trabajador.promedio = avg['calificacion__avg']
+                    trabajador.save()
+
             return self.form_valid(form)
 
         return render(request, self.template_name, {'form': form})
+    
+    def form_valid(self, form):
+        instancia = form.save(commit=False)
+        return HttpResponseRedirect(reverse_lazy('Trabajadores:mostrarPerfil', args = [str(instancia.trabajador.pk)]))
 
   
 
