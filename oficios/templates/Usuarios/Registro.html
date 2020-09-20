@@ -4,7 +4,11 @@
 {{form.errors}}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}    
-    {{form.as_p}}
+    {{form.as_p}}       
+    <br>
     <input type="submit" value="Registrarse">
 </form>
+
+
+
 {% endblock content %}
