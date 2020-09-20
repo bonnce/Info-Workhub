@@ -13,6 +13,8 @@
 /*!
 Nuestros cambios
  */
+
+
 #form {
   width: 250px;
   margin: 0 auto;
@@ -65,40 +67,50 @@ Template generico
     display: flex;
     flex-direction: row-reverse;
 }
-.valoracion button {
+.valoracion div>label {
     background-color: initial;
     border: 0;
     color: var(--color-inactivo);
     transition: 1s all;
 }
-.valoracion button:hover {
+.valoracion div>label:hover {
     cursor: pointer;
     color: var(--color-hover);
-    transform: rotate(360deg);
+    transform: rotate(180deg);
 }
-button:nth-child(1):hover ~ button {
-    color: var(--color-hover);
-    transform: rotate(360deg);
+.valoracion div>input[type=radio]:checked + label {
+  color: var(--color-checked);
+  transform: rotate(360deg);
 }
-button:nth-child(2):hover ~ button {
+div:nth-child(1):hover ~ div>label:nth-child(2),
+div:nth-child(1).check ~ div>label:nth-child(2) {
     color: var(--color-hover);
-    transform: rotate(360deg);
+    transform: rotate(180deg);
 }
-button:nth-child(3):hover ~ button {
+div:nth-child(2):hover ~ div>label:nth-child(2),
+div:nth-child(2).check ~ div>label:nth-child(2){
     color: var(--color-hover);
-    transform: rotate(360deg);
+    transform: rotate(180deg);
 }
-button:nth-child(4):hover ~ button {
+div:nth-child(3):hover ~ div>label:nth-child(2),
+div:nth-child(3).check ~ div>label:nth-child(2) {
     color: var(--color-hover);
-    transform: rotate(360deg);
+    transform: rotate(180deg);
 }
-button:nth-child(5):hover ~ button {
+div:nth-child(4):hover ~ div>label:nth-child(2),
+div:nth-child(4).check ~ div>label:nth-child(2) {
     color: var(--color-hover);
-    transform: rotate(360deg);
+    transform: rotate(180deg);
+}
+div:nth-child(5):hover ~ div>label:nth-child(2),
+div:nth-child(5).check ~ div>label:nth-child(2) {
+    color: var(--color-hover);
+    transform: rotate(180deg);
 }
 :root {
   --color-inactivo: #5f5050;
   --color-hover: #ffa400;
+  --color-checked: #be0000;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;

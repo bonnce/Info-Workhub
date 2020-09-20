@@ -4,6 +4,18 @@
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
     */
     (function($) {
+  //REGISTRO
+  var go_to=function(){
+    window.location.href=$(this).attr('data-url')
+  };
+  $('#RegistroModal').on('click','.registro',go_to);
+  $('#EditarPerfil').on('click',go_to)
+  //check
+  var check = function(){
+    $( "input:checked" ).parent().addClass('check')
+    $( "input:not(:checked)" ).parent().removeClass('check')
+  }
+  $('input[type=radio]').on('click',check)
   "use strict"; // Start of use strict
 
   // Smooth scrolling using jQuery easing
