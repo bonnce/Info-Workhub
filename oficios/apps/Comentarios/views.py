@@ -15,6 +15,10 @@ class Comentar(LoginRequiredMixin,PermisosMixin,PasajeMixin,CreateView):
     form_class = ComentariosForm
     rol='stalker'
     campos=['perfil','objeto']
+
+    def tratar_perfil(self,perfil,form,instancia,objeto=None):
+        instancia.stalker=perfil
+        form.save(commit=True)
     
     # Aqui redefinimos el form_valid, para obtener una instacia del formulario y de ahi sacar el pk
     # entonces con eso cmabiamos el succes_url para que al comentar la pagina se refresque en el mismo lugar del perfil 

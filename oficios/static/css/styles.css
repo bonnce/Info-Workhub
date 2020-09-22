@@ -14,6 +14,12 @@
 Nuestros cambios
  */
 
+.icon .workhub {
+    background: url('assets/img/workhub.png');
+    height: 20px;
+    width: 20px;
+    display: block;
+}
 
 #form {
   width: 250px;
@@ -10196,7 +10202,7 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/electrician-1080586_1920.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
