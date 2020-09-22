@@ -5,7 +5,7 @@ from ..Zonas.models import Zonas
 from ..Usuarios.models import Usuarios
 from django.db import transaction
 
-
+#ALTA------------------------------------
 #Se hereda del UserCreationForm ya que cuenta con todo el tema de validaciones para el create de un usuario
 #Formulario de registrar un trabajador
 class TrabajadoresForm(UserCreationForm):
@@ -39,6 +39,9 @@ class TrabajadoresForm(UserCreationForm):
 
         return usuario
 
+
+        
+#UPDATE-----------------------------------------
 #Se hereda del UserChangeForm ya que cuenta con todo el tema de validaciones para el update de un usuario
 #Formulario de editar el perfil de un trabajador
 class EditarForm(UserChangeForm):
