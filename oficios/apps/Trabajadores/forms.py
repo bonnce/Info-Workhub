@@ -46,6 +46,8 @@ class EditarForm(UserChangeForm):
     especialidad=forms.CharField(max_length=50)
     rubro=forms.ModelChoiceField(Rubros.objects.all())
     certificado=forms.ImageField(required=False)
+    zonas=forms.ModelMultipleChoiceField(Zonas.objects.all())
+
     class Meta: #Se ocupa el modelo usuario para que django se encargue de las validaciones
         model=Usuarios
         fields=['first_name','last_name','username','email','phone','address']
@@ -58,6 +60,7 @@ class EditarForm(UserChangeForm):
         self.fields['especialidad'].initial=kwargs['instance'].Worker.especialidad
         self.fields['rubro'].initial=kwargs['instance'].Worker.rubro
         self.fields['certificado'].initial=kwargs['instance'].Worker.certificado
+        
 
 #Se redefine el Save porque lo unico que se guardaria son los campos del usuario y no los del trabajador
     @transaction.atomic
