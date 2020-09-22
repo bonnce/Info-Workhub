@@ -8,7 +8,7 @@ class ComentariosForm(ModelForm):
     class Meta:
         model = Comentarios
         fields =['descripcion']
-    
+
 #Redefinicion del save para que devuelva la instancia y no guarde en la base de datos instant
 #Hasta que yo se lo diga
     def save(self,commit=False):
