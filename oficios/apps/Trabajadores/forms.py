@@ -5,7 +5,7 @@ from ..Zonas.models import Zonas
 from ..Usuarios.models import Usuarios
 from django.db import transaction
 
-
+#ALTA------------------------------------
 #Se hereda del UserCreationForm ya que cuenta con todo el tema de validaciones para el create de un usuario
 #Formulario de registrar un trabajador
 class TrabajadoresForm(UserCreationForm):
@@ -39,6 +39,9 @@ class TrabajadoresForm(UserCreationForm):
 
         return usuario
 
+
+        
+#UPDATE-----------------------------------------
 #Se hereda del UserChangeForm ya que cuenta con todo el tema de validaciones para el update de un usuario
 #Formulario de editar el perfil de un trabajador
 class EditarForm(UserChangeForm):
@@ -46,6 +49,8 @@ class EditarForm(UserChangeForm):
     especialidad=forms.CharField(max_length=50)
     rubro=forms.ModelChoiceField(Rubros.objects.all())
     certificado=forms.ImageField(required=False)
+    zonas=forms.ModelMultipleChoiceField(Zonas.objects.all())
+
     class Meta: #Se ocupa el modelo usuario para que django se encargue de las validaciones
         model=Usuarios
         fields=['first_name','last_name','username','email','phone','address']
@@ -58,6 +63,10 @@ class EditarForm(UserChangeForm):
         self.fields['especialidad'].initial=kwargs['instance'].Worker.especialidad
         self.fields['rubro'].initial=kwargs['instance'].Worker.rubro
         self.fields['certificado'].initial=kwargs['instance'].Worker.certificado
+        print(kwargs['instance'].Worker.zonas)
+        self.fields['zonas'].initial=kwargs['instance'].Worker.zonas.all()
+        
+        
 
 #Se redefine el Save porque lo unico que se guardaria son los campos del usuario y no los del trabajador
     @transaction.atomic
@@ -68,6 +77,7 @@ class EditarForm(UserChangeForm):
         trabajador.especialidad=self.cleaned_data.get('especialidad')
         trabajador.rubro=self.cleaned_data['rubro']
         trabajador.certificado=self.cleaned_data['certificado']
+        zone=self.cleaned_data['zonas']
+        trabajador.zonas.set(zone)
         trabajador.save()
-
         return usuario
