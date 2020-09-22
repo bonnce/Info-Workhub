@@ -20,7 +20,6 @@ class Listar(generic.ListView):
     model = models.Trabajadores
     template_name = "Usuarios/Trabajadores/Listar.html"
 
-
 #Se usa el modelo Usuario ya que es el modelo usado por el form y el modelo que se instancia
 #Para que django se ocupe de lo complicado
 class EditarPerfil(generic.edit.UpdateView):
@@ -28,7 +27,6 @@ class EditarPerfil(generic.edit.UpdateView):
     model=Usuarios
     form_class=forms.EditarForm
     success_url=reverse_lazy('Usuarios:perfil')
-
 
 class MostrarPerfil(generic.DetailView):
     model = models.Trabajadores
