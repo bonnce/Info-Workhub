@@ -50,17 +50,25 @@
                                 <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
                             </li>
                         {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
+                            <li class="nav-item" style="margin:10px;">
+                                <a href="{% url 'login' %}" role="button" class="btn btn-warning" data-target="">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Login
+                                </a>                                
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item"  style="margin:10px;">
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#RegistroModal">
+                                    <i class="fas fa-user-plus"></i>
                                     Registrarse
                                 </button>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'Trabajadores:Listar' %}">LISTAR TODOS LOS TRABAJADORES</a>
+                        <li class="nav-item" style="margin:10px;">
+                            <a href="{% url 'Trabajadores:Listar' %}" role="button" class="btn btn-warning" data-target="">
+                                <i class="fas fa-table"></i>
+                                Trabajadores
+                            </a>                                
                         </li>
+                        
                     </ul>
                 </div>
             </div>           
