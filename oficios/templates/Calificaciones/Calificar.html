@@ -1,4 +1,5 @@
 {% load static %}
+
 <form method="POST" action="{% url 'Calificaciones:Calificar' object.pk %}">
 	{% csrf_token %}
 	
@@ -55,6 +56,8 @@
 			<input type="submit" value="Calificar">
 	</div>	
 </form>
+
+
 
 
 	
