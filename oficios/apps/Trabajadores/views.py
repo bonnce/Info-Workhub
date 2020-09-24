@@ -5,6 +5,7 @@ from . import models
 from . import forms
 from ..Usuarios.models import Usuarios
 from ..Comentarios.models import Comentarios
+from ..Zonas.models import Zonas
 
 class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
