@@ -11,12 +11,16 @@
 
 <form method="POST">
     {% csrf_token %}
-    {{form.errors}}
-    <input type="text" name="username" placeholder="Usuario">
-    <input type="password" name="password" placeholder="Contraseña">
-    <input type="submit" name="" value="Ingresar">
+    
+    <input type="text" name="username" style="border-radius: 5px;" placeholder="Usuario">
+    <input type="password" name="password" style="border-radius: 5px;" placeholder="Contraseña">
+    <input type="submit" class="bt btn-primary" style="border-radius: 5px;" name="" value="Ingresar">
     <input type="hidden" name="next" value="{{next}}">
-
+    {% if form.errors %}
+    <div class="container" style="padding: 15px; text-align: left;">
+        <p class="text-warning">Su usuario y/o contraseña no son válidos</p>
+    </div>
+    {% endif%}
 </form>
 
 {% endblock content %}

@@ -3,7 +3,7 @@
 {% block content %}
 
 
-    <div class="container" style="background-color: floralwhite;">
+    <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgb(160, 214, 250); filter:alpha(opacity=80); opacity:0.8;">
         <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">        
@@ -11,17 +11,19 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Rubro</th>
                                 <th>Especialidad</th>
-                                <th>#</th>
+                                <th>Perfil</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for object in object_list %} 
                             <tr>
-                            <td>{{ object.usuario.first_name }}</td>
+                            <td>{{ object.usuario.first_name}} {{object.usuario.last_name }}</td>
 
-                            <td>{{ object.especialidad }}</td>
-                            <td><a href="{% url 'Trabajadores:mostrarPerfil' object.pk %}">PERFIL</a></td>
+                            <td>{{ object.rubro }}</td>
+                            <td>{{object.especialidad}}</td>
+                            <td><a href="{% url 'Trabajadores:mostrarPerfil' object.pk %}"><i class="far fa-id-card" style="color: #000000;" ></i></a></td>
                         <!-- If objet_list is empty  -->
                             
                             </tr>

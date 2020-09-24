@@ -31,7 +31,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img style="filter:alpha(opacity=70); opacity:0.7;" src="{% static '/assets/img/workhub.png' %}" height="40" width="80"></img></a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img style="filter:alpha(opacity=70); opacity:0.7;" src="{% static '/assets/img/workhub.png' %}" height="40" width="95"></img></a>
             
                 <a class="navbar-brand" href="{% url 'Home' %}">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,15 +40,20 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         {% if user.is_authenticated %}
-                            <li class="nav-item">                            
-                                <a class="nav-link js-scroll-trigger" href= "
-                                {% url 'Usuarios:perfil' %}">                
-                                Hola {{user.username}}
-                                </a>
+                            <li class="nav-item" style="margin:10px;">
+                                <a href="{% url 'Usuarios:perfil' %}" role="button" class="btn btn-warning" data-target="">
+                                    <i class="fas fa-user-alt"></i>
+                                    Hola {{user.first_name}}
+                                </a>                                
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+                            
+                            <li class="nav-item" style="margin:10px;">
+                                <a href="{% url 'logout' %}" role="button" class="btn btn-warning" data-target="">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>                                
                             </li>
+                            
                         {% else %}
                             <li class="nav-item" style="margin:10px;">
                                 <a href="{% url 'login' %}" role="button" class="btn btn-warning" data-target="">
