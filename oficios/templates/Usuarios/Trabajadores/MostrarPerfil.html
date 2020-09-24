@@ -12,7 +12,13 @@
     <li></li><img src="{{object.certificado.url}}" alt=""></li>
     
     {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
+    {% if not user.is_authenticated %}
+    <P>PARA CALIFICAR Y COMENTAR DEBE ESTAR LOGUEADO</P>
+    <a href="{% url 'Stalkers:registro' %}" class="btn btn-warning">Register</a>
+    <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
+    {% else %}
     {% include 'Comentarios/Comentar.html' %}
     {% include 'Calificaciones/Calificar.html' %}
+    {% endif %}
 </ul>
 {% endblock content %}
