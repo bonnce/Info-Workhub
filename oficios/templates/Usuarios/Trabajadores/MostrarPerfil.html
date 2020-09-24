@@ -9,6 +9,9 @@
     <li>{{object.promedio|floatformat:2}}</li>
     <li>{{object.especialidad}}</li>
     <li>{{object.rubro}}</li>
+    {% for z in object.zonas.all %}
+    <li>{{z}}</li>
+    {% endfor %}
     <li></li><img src="{{object.certificado.url}}" alt=""></li>
     
     {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
