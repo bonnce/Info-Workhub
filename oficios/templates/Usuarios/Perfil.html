@@ -3,50 +3,88 @@
 {% block title %}
 <title> Perfil </title>
 {% endblock title %}
-{% block content %}    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 mx-auto">
-                <div class="tab-header mx-auto">
-                    <h1>PERFIL</h1>
+{% block content %}   
+<div class="container emp-profile">
+        <div class="row text-center">
+            
+                {% if user.Worker.certificado %}
+                <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{user.Worker.certificado.url}}" alt=""/>
+                    
                 </div>
-            </div>            
-        </div>        
-        <div class="row">
+            </div>
+                {% endif %}
+                
+                {% if user.Trabajador %}
+            <div class="col-md-6">
+                {% else %}
+                <div class="col-md-10">
+                            {% endif %}
+                <div class="profile-head">
+                            <h3>
+                                {{user.first_name}} {{user.last_name}}
+                            </h3>
+                            {% if user.Trabajador %}
+                            <h6>
+                                {{user.Worker.especialidad}}
+                            </h6>
+                            <p class="proile-rating">RANKINGS : <span>{{user.Worker.promedio|floatformat:"0"}}/5</span></p>   
+                            {% else %}
+                            <br><br>
+                            {% endif %}
+                
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button id="EditarPerfil" class="btn btn-warning profile-edit-btn"
+                data-url="{% url user|ObtenerUrl:'editarPerfil' user.pk %}">
+                    Editar
+                </button>
+            </div>
+        </div>
+        <div class="row text-center">
+            {% if user.Trabajador %}
             <div class="col-md-4">
-                <div class="tab-content mx-auto" id="myTabContent">
-                    <div class="row">
-                        <div class="col-md-8 mx-auto">
-                            <h3>Hola {{user.username}}</h3>
-                        </div>
-                    </div>
-                    <div class="row">            
-                        <div class="col-md-4">
-                            <button id="EditarPerfil" class="btn btn-warning"
-                            data-url="{% url user|ObtenerUrl:'editarPerfil' user.pk %}">
-                                Editar
-                            </button>
-                        </div>
-                    </div>
-                    {% for label,datos in user.ObtenerDatos.items  %}
+                
+                <div class="profile-work">
+
+                    <p class="font-weight-bold">Rubro: <span>{{user.Worker.rubro}}</span></p>
+                    <p>Zonas</p>
+                    {% for z in user.Worker.zonas.all  %}
+                      <p><span >{{z}}</span></p>
+                    {% endfor %}
+                </div>
+                
+                
+            </div>
+            
+            <div class="col-md-8">
+                {% else %}
+                <div class="col-md-12">
+                {% endif %}
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        {% for label,datos in user.ObtenerDatos.items  %}
                         {% if datos %}
-                            <div class="row">            
-                                <div class="col-md-4">
+                            <div class="row text-left">            
+                                <div class="col-md-6">
                                     <label>{{label}}: </label>
                                 </div>                
-                                <div class="col-md-4">
-                                    {% if datos.url %}
-                                        <img src="{{datos.url}}" alt="">
-                                    {% else %}                    
+                                <div class="col-md-6 text-right">
+                                                       
                                     <p>{{datos}}</p>
-                                    {% endif %}
+  
                                 </div>
                             </div>    
                         {% endif %}
                     {% endfor %}
+                    </div>
+                   
                 </div>
             </div>
-        </div>
-    </div>
+        </div>       
+</div> 
+    
     
 {% endblock content %}
