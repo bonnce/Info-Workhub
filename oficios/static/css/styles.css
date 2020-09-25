@@ -40,7 +40,7 @@ input[type="radio"] {
 }
 
 label {
-  color: grey;
+  color: --gray(226, 226, 226);
 }
 
 .calificacion {
@@ -50,7 +50,7 @@ label {
 
 label:hover,
 label:hover~label {
-  color: orange;
+  color: rgb(47, 0, 255);
 }
 
 input[type="radio"]:checked~label {
@@ -644,7 +644,13 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-
+.login {
+  padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #e3defbe3;
+}
 .container {
   width: 100%;
   padding-right: 15px;
