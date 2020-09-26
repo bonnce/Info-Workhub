@@ -32,7 +32,11 @@
                         {% endfor %}
                     </div>
                         <br>
-                        <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                        {%if object.certificado%}
+                            <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                        {%else%}
+                            <h4>   Sin Imagen....</h4>
+                        {%endif%}
                 </div>
             </div>
             
@@ -42,8 +46,8 @@
             <a href="{% url 'Stalkers:registro' %}" class="btn btn-warning">Register</a>
             <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
             {% else %}
-            {% include 'Comentarios/Comentar.html' %}
-            {% include 'Calificaciones/Calificar.html' %}
+                {% include 'Comentarios/Comentar.html' %}
+                {% include 'Calificaciones/Calificar.html' %}
             {% endif %}
         </ul>
 {% endblock content %}
