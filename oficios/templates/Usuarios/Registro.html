@@ -1,17 +1,105 @@
 {% extends "Base.html" %}
 {% block title %}
-<title> Registro </title>
+<title> --Registro-- </title>
 {% endblock title %}
 {% block content %}
-<h1>Registrate ya {{usuario}}!!!</h1>
-{{form.errors}}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}    
-    {{form.as_p}}       
-    <br>
-    <input type="submit" value="Registrarse">
-</form>
 
+<br>
+<br>
+<hr>
+<h1>Registrate ya {{usuario}}!!!</h1>
+<hr>
+<br>
+
+{{form.errors}}
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div class="jumbotron">
+            
+        <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="first_name" placeholder="Nombre" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Apellido">Apellido</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Apellido" required>
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="username" placeholder="Ingrese su nombre de usuario" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electronico" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="pass1">Contraseña</label>
+                <input type="password" class="form-control" id="Contraseña1" name="password1" placeholder="Ingrese su Contraseña" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="pass2">Contraseña</label>
+                <input type="password" class="form-control" id="Contraseña2" name="password2" placeholder="Repita la Contraseña" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="phone">Telefono</label>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="Ingrese su numero de contacto" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="address">Direccion</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Ingrese su domicilio" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="Especialidad">Especialidad</label>
+                <input type="text" class="form-control" id="Especialidad" name="Especialidad" placeholder="Ingrese su especialidad laboral" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="certificado">Adjunte certificado si posee</label>
+                <input type="file" class="form-control" id="certificado" name="Certificado" placeholder="Ingrese su especialidad laboral">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="zonas">Seleccione Zonas</label>
+                <select name="zonas" id="zonas" multiple required>
+                    {%for zonas in form.zonas %}
+                    <option value="{{ zonas }}"></option>
+                    {%endfor%}
+                </select> 
+            </div>
+            <div class="form-group col-md-4">
+                <label for="rubro">Elija su rubro</label>
+                <select name="Rubro" id="rubro"  required>
+                    {%for rubro in form.Rubro %}
+                    <option value="{{ rubro }}"></option>
+                    {%endfor%}
+                </select> 
+            </div>
+        </div>
+        
+        
+                
+    </div>
+ 
+    
+
+   
+    
+    <hr>
+    <center><input type="submit"  class="btn btn-primary" value="Registrarse"></center>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+</form>
 
 
 {% endblock content %}

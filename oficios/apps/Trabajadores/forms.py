@@ -19,7 +19,11 @@ class TrabajadoresForm(UserCreationForm):
     class Meta:
         model=Usuarios
         fields=['first_name','last_name','username','password1','password2','email','phone','address']
-        
+
+    def __init__(self, *args, **kwargs):
+        super(TrabajadoresForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'        
         
 #Se redefine el save ya que los unicos datos que se guardan son del modelo que se asigna en el Meta
 #Por ende hay que crear un trabajador a mano en este metodo
