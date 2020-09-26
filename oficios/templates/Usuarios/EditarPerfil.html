@@ -1,14 +1,23 @@
 {% extends "Base.html" %}
 {% block title %}
-<title> Editar Perfil </title>
+<title> <- Editar Perfil - {{user.username}} -> </title>
 {% endblock title %}
-
 {% block content %}
-<h1>Editar {{user.username}}</h1>
+<br>
+<hr>
+<br>
+<br>
+
 {{form.errors}}
 <form method="POST" enctype="multipart/form-data" >
     {% csrf_token %}    
-    {{form.as_p}}
-    <input type="submit" value="Validar Cambios">
+    <div class="jumbotron">
+        <h2 class="display-4">Editar {{user.username}}!!!</h2>
+        <hr>
+        <br>    
+            {{form}}
+        <center><input type="submit"  class="btn btn-primary" value="Validar Cambios"></center>
+        
+    </div>
 </form>
 {% endblock content %}
