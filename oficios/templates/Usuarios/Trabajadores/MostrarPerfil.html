@@ -32,7 +32,9 @@
                         {% endfor %}
                     </div>
                         <br>
-                        <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                        {% if object.certificado %}
+                            <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                        {% endif %}
                 </div>
             </div>
             
