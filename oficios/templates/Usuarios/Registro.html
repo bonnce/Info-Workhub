@@ -69,31 +69,27 @@
                     <div class="form-group col-md-4">
                         <label for="zonas">Seleccione Zonas</label>
                         <select name="zonas" id="zonas" multiple required>
-                            {%for zonas in form.zonas %}
-                                <option value="{{ zonas }}"></option>
-                            {%endfor%}
+                            
+                                <option {{ form.zonas }}></option>
+                            
                         </select> 
                     </div>
                     <div class="form-group col-md-4">
                         <label for="rubro">Elija su rubro</label>
                         <select name="Rubro" id="rubro"  required>
-                            {%for rubro in form.Rubro %}
-                                <option value="{{ rubro }}"></option>
-                            {%endfor%}
+                            
+                                <option {{ form.Rubro }}>
+                            
                         </select> 
                     </div>
                 </div>
                 
         {%endif%}
-
+        <hr>
+        <center><input type="submit"  class="btn btn-primary" value="Registrarse"></center>
+        <hr>
     </div>
-    <hr>
-    <center><input type="submit"  class="btn btn-primary" value="Registrarse"></center>
-    <hr>
-    <br>
-    <br>
-    <br>
-    <br>
+   
 </form>
 
 

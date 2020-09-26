@@ -1,31 +1,49 @@
 {% extends 'Base.html' %}
 {% block title %}
-<title> Perfiles </title>
+<title> Perfil {{user.username}} </title>
 {% endblock title %}
 
 {% block content %}
-<ul>
-    <li>{{object.usuario.first_name}}</li>
-    <li>{{object.usuario.last_name}}</li>
-    <li>{{object.usuario.email}}</li>
-    <li>{{object.usuario.address}}</li>
-    <li>{{object.usuario.phone}}</li>
-    <li>{{object.promedio|floatformat:2}}</li>
-    <li>{{object.especialidad}}</li>
-    <li>{{object.rubro}}</li>
-    {% for z in object.zonas.all %}
-    <li>{{z}}</li>
-    {% endfor %}
-    <li></li><img src="{{object.certificado.url}}" alt=""></li>
-    
-    {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
-    {% if not user.is_authenticated %}
-    <P>PARA CALIFICAR Y COMENTAR DEBE ESTAR LOGUEADO</P>
-    <a href="{% url 'Stalkers:registro' %}" class="btn btn-warning">Register</a>
-    <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
-    {% else %}
-    {% include 'Comentarios/Comentar.html' %}
-    {% include 'Calificaciones/Calificar.html' %}
-    {% endif %}
-</ul>
+ <br>
+ <br>       
+        <ul class="list-group">
+            <div class="jumbotron"> 
+                <h2 class="display-4">Perfil {{user.username}}!!!</h2>
+                <hr>
+                <br>    
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <li class="list-group-item active">Nombre: {{object.usuario.first_name}}</li>
+                        <li class="list-group-item">Apellido: {{object.usuario.last_name}}</li>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <li class="list-group-item active">Email: {{object.usuario.email}}</li>
+                        <li class="list-group-item">Direccion: {{object.usuario.address}}</li>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <li class="list-group-item active">Telefono: {{object.usuario.phone}}</li>
+                        <li class="list-group-item">Promedio: {{object.promedio|floatformat:2}}</li>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <li class="list-group-item active">Especialidad: {{object.especialidad}}</li>
+                        <li class="list-group-item">Rubro: {{object.rubro}}</li>
+                        {% for z in object.zonas.all %}
+                        <li class="list-group-item active">{{z}}</li>
+                        {% endfor %}
+                    </div>
+                        <br>
+                        <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                </div>
+            </div>
+            
+            {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
+            {% if not user.is_authenticated %}
+            <P>PARA CALIFICAR Y COMENTAR DEBE ESTAR LOGUEADO</P>
+            <a href="{% url 'Stalkers:registro' %}" class="btn btn-warning">Register</a>
+            <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
+            {% else %}
+            {% include 'Comentarios/Comentar.html' %}
+            {% include 'Calificaciones/Calificar.html' %}
+            {% endif %}
+        </ul>
 {% endblock content %}

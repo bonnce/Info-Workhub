@@ -59,6 +59,11 @@ class EditarForm(UserChangeForm):
         model=Usuarios
         fields=['first_name','last_name','username','email','phone','address']
 
+    def __init__(self, *args, **kwargs):
+        super(StalkersForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control' 
+
 #Se redefine el init para mostrar los datos de la instancia en los campos que no son del modelo usuario
 #kwargs['instance'] tiene la instancia del modelo en ese momento, en este caso usuario
 #Con la relacion Worker se accede a los datos de los campos del trabajador
