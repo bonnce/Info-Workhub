@@ -32,11 +32,17 @@
                         {% endfor %}
                     </div>
                         <br>
+<<<<<<< HEAD
                         {%if object.certificado%}
                             <img src="{{object.certificado.url}}" alt="" width="200" height="200">
                         {%else%}
                             <h4>   Sin Imagen....</h4>
                         {%endif%}
+=======
+                        {% if object.certificado %}
+                            <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                        {% endif %}
+>>>>>>> 6e99cc8cf69cb67ad41289e8edddec06bd03cc31
                 </div>
             </div>
             
