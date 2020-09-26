@@ -1,17 +1,20 @@
 {% extends "Base.html" %}
-
+{% block title %}
+<title> Trabajadores </title>
+{% endblock title %}
 {% block content %}
 
 
-    <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgb(160, 214, 250); filter:alpha(opacity=80); opacity:0.8;">
+    <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.959); filter:alpha(opacity=80); opacity:0.8;">
         <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">        
-                        <table id="TableT" class="table table-striped table-bordered" style="width:100%">
+                        <table id="TableT" class="display table table-hover table-bordered" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Ranking</th>
                                 <th>Nombre</th>
-                                <th>Rubro</th>
+                                <th class="select-filter">Rubro</th>
                                 <th>Especialidad</th>
                                 <th>Perfil</th>
                             </tr>
@@ -19,6 +22,7 @@
                         <tbody>
                             {% for object in object_list %} 
                             <tr>
+                            <td>{{ object.promedio|floatformat:"0" }}/5</td>
                             <td>{{ object.usuario.first_name}} {{object.usuario.last_name }}</td>
 
                             <td>{{ object.rubro }}</td>
@@ -32,7 +36,14 @@
     <strong>No objects yet. </strong> 
                             {% endfor %}
 
-                        </tbody>        
+                        </tbody>  
+                        <tfoot>
+                            <th ></th>
+                            <th > </th>
+                                <th >Rubro</th>
+                                <th ></th>
+                                <th ></th>
+                        </tfoot>      
                     </table>                  
                     </div>
                 </div>
