@@ -12,9 +12,7 @@ class Usuarios(AbstractUser):
 	def ObtenerDatos(self):
 		cositas={'Usuario':self.username,'Nombre':self.first_name,'Apellido':self.last_name,'Email':self.email,
 		'Direccion':self.address,'Telefono':self.phone}
-		if(self.Trabajador):
-			cositas.update({'Especialidad':self.Worker.especialidad,'Valoracion':self.Worker.promedio,
-			'Rubro':self.Worker.rubro,'Certificado':self.Worker.certificado})
+		
 		return cositas
 		
 	#Obtener el pk si el usuario es un trabajador o un stalker

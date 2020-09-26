@@ -40,7 +40,7 @@ input[type="radio"] {
 }
 
 label {
-  color: grey;
+  color: --gray(226, 226, 226);
 }
 
 .calificacion {
@@ -50,7 +50,7 @@ label {
 
 label:hover,
 label:hover~label {
-  color: orange;
+  color: rgb(47, 0, 255);
 }
 
 input[type="radio"]:checked~label {
@@ -644,7 +644,13 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-
+.login {
+  padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #e3defbe3;
+}
 .container {
   width: 100%;
   padding-right: 15px;
@@ -10114,6 +10120,35 @@ hr.divider {
   max-width: 3.25rem;
   border-width: 0.2rem;
   border-color: #f4623a;
+}
+
+.hola {
+  position: relative;
+  display: inline-block;
+}
+
+.hola .soyhome {
+  visibility: hidden;
+  width: 13rem;
+  background-color:rgb(58, 57, 57);
+  color: rgba(200, 200, 200, 0.883);
+  font-style: italic;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.hola:hover .soyhome {
+  visibility: visible;
+}
+.work.workhub:hover {
+  box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.work.workhub {
+  background:url("../assets/img/workhub.png");
+  background-repeat: no-repeat;
+  background-size: 7rem 3rem;
+  height: 3rem;
+  width: 7rem;
 }
 
 hr.light {
