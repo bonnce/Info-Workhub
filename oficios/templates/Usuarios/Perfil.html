@@ -17,9 +17,9 @@
                 {% endif %}
                 
                 {% if user.Trabajador %}
-            <div class="col-md-6">
+            <div class="col-md-4">
                 {% else %}
-                <div class="col-md-10">
+                <div class="col-md-8">
                             {% endif %}
                 <div class="profile-head">
                             <h3>
@@ -41,36 +41,20 @@
                 data-url="{% url user|ObtenerUrl:'editarPerfil' user.pk %}">
                     Editar
                 </button>
+               
             </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger profile-delete-btn" data-toggle="modal" 
+                data-target="#BajaModal">
+                    <i class="fas fa-trash-plus"></i>
+                    Darse de baja
+                </button>
+            </div>
+            
         </div>
         <div class="row text-center">
             {% if user.Trabajador %}
             <div class="col-md-4">
-<<<<<<< HEAD
-                <div class="tab-content mx-auto" id="myTabContent">
-                    <div class="row">
-                        <div class="col-md-8 mx-auto">
-                            <h3>Hola {{user.username}}</h3>
-                        </div>
-                    </div>
-                    <div class="row">            
-                        <div class="col-md-4">
-                            <button id="EditarPerfil" class="btn btn-warning"
-                            data-url="{% url user|ObtenerUrl:'editarPerfil' user.pk %}">
-                                Editar
-                            </button>
-                        </div>
-                    </div>
-                         id="BorrarPerfil" class="btn btn-warning"
-                            data-url="{% url user|ObtenerUrl:'BorrarPerfil' user.pk %}">
-                                Editar
-                    
-                    <a href="{% url user|ObtenerUrl:'BorrarPerfil' user.pk %}" class="btn btn-danger"> Borrar Perfil</a>
-
-
-                    </div>
-                    {% for label,datos in user.ObtenerDatos.items  %}
-=======
                 
                 <div class="profile-work">
 
@@ -91,7 +75,6 @@
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         {% for label,datos in user.ObtenerDatos.items  %}
->>>>>>> 1c4ec5de658fbcde0985ce41752db1a20991767d
                         {% if datos %}
                             <div class="row text-left">            
                                 <div class="col-md-6">
@@ -113,4 +96,28 @@
 </div> 
     
     
+<!--Modal de registro-->
+<div class="modal fade" id="BajaModal" tabindex="-1" role="dialog" aria-labelledby="Registro" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Darse de baja</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <form method="post" action="{% url 'Usuarios:BorrarPerfil' user.pk %}">{% csrf_token %} 
+        <div class="modal-body">
+        <p>{{user.username}} - Esta seguro que quiere eliminar su cuenta? </p>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-danger" value="Si"> 
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+    </form> 
+    </div>
+    </div>
+</div>  
+
+
 {% endblock content %}
