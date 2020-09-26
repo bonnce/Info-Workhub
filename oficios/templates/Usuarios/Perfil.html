@@ -26,6 +26,14 @@
                             </button>
                         </div>
                     </div>
+                         id="BorrarPerfil" class="btn btn-warning"
+                            data-url="{% url user|ObtenerUrl:'BorrarPerfil' user.pk %}">
+                                Editar
+                    
+                    <a href="{% url user|ObtenerUrl:'BorrarPerfil' user.pk %}" class="btn btn-danger"> Borrar Perfil</a>
+
+
+                    </div>
                     {% for label,datos in user.ObtenerDatos.items  %}
                         {% if datos %}
                             <div class="row">            

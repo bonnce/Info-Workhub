@@ -36,3 +36,9 @@ class MostrarPerfil(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
         return context
+
+class BorrarPerfil(generic.DeleteView):
+    model = models.Usuarios
+    template_name = 'Usuarios/BorrarPerfil.html'
+    success_url = reverse_lazy('logout')
+
