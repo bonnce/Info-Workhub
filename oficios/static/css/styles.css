@@ -14,6 +14,11 @@
 Nuestros cambios
  */
 
+table tbody tr:hover{
+  cursor: pointer;
+}
+
+
 .icon .workhub {
     background: url('assets/img/workhub.png');
     height: 20px;

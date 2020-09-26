@@ -9,15 +9,15 @@
     window.location.href=$(this).attr('data-url')
   };
   $('#RegistroModal').on('click','.registro',go_to);
-  $('#EditarPerfil').on('click',go_to)
+  $('#EditarPerfil').on('click',go_to);
   //check
   var check = function(){
     $( "input:checked" ).parent().addClass('check')
     $( "input:not(:checked)" ).parent().removeClass('check')
   }
-  $('input[type=radio]').on('click',check)
+  $('input[type=radio]').on('click',check);
   "use strict"; // Start of use strict
-
+  $('#TableT tbody').on('click', 'tr', go_to);
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {

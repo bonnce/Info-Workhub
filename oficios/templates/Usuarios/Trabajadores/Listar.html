@@ -16,18 +16,18 @@
                                 <th>Nombre</th>
                                 <th class="select-filter">Rubro</th>
                                 <th>Especialidad</th>
-                                <th>Perfil</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             {% for object in object_list %} 
-                            <tr>
+                            <tr data-url="{% url 'Trabajadores:mostrarPerfil' object.pk %}">
                             <td>{{ object.promedio|floatformat:"0" }}/5</td>
                             <td>{{ object.usuario.first_name}} {{object.usuario.last_name }}</td>
 
                             <td>{{ object.rubro }}</td>
                             <td>{{object.especialidad}}</td>
-                            <td><a href="{% url 'Trabajadores:mostrarPerfil' object.pk %}"><i class="far fa-id-card" style="color: #000000;" ></i></a></td>
+                            
                         <!-- If objet_list is empty  -->
                             
                             </tr>
@@ -42,7 +42,7 @@
                             <th > </th>
                                 <th >Rubro</th>
                                 <th ></th>
-                                <th ></th>
+
                         </tfoot>      
                     </table>                  
                     </div>
