@@ -11,7 +11,7 @@ DATABASES = {
         'NAME':'OficiosDB',
         'Trusted_Connection':'yes',
         'HOST':'.\INFOGRUPO3',
-        #'HOST':'NB_SP_10\SQLEXPRESS',
+         #'HOST':'NB_SP_10\SQLEXPRESS',
         'OPTIONS':{
             'driver':'SQL Server Native Client 11.0',
         }
