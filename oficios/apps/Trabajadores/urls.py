@@ -9,7 +9,7 @@ urlpatterns = [
     path('EditarPerfil/<str:pk>',views.EditarPerfil.as_view(),name='editarPerfil'),
     path('MostrarPerfil/<str:pk>', views.MostrarPerfil.as_view(), name='mostrarPerfil'),
 
-    path('BorrarPerfil/<str:pk>', views.BorrarPerfil.as_view(), name='BorrarPerfil'),
+
 
 
 ]   

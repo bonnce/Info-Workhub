@@ -10,7 +10,7 @@ class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
     model=models.Stalkers
     form_class=forms.StalkersForm
-    success_url=reverse_lazy('Home')
+    success_url=reverse_lazy('login')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -11,7 +11,7 @@ class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
     model=models.Trabajadores
     form_class=forms.TrabajadoresForm
-    success_url=reverse_lazy('Home')
+    success_url=reverse_lazy('login')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['usuario'] = 'Trabajador'
@@ -37,8 +37,5 @@ class MostrarPerfil(generic.DetailView):
         context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
         return context
 
-class BorrarPerfil(generic.DeleteView):
-    model = models.Usuarios
-    template_name = 'Usuarios/BorrarPerfil.html'
-    success_url = reverse_lazy('logout')
+
 
