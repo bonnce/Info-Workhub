@@ -23,7 +23,8 @@ class TrabajadoresForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(TrabajadoresForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'        
+            if visible.name!='Certificado':
+                visible.field.widget.attrs['class'] = 'form-control'        
         
 #Se redefine el save ya que los unicos datos que se guardan son del modelo que se asigna en el Meta
 #Por ende hay que crear un trabajador a mano en este metodo
@@ -58,11 +59,7 @@ class EditarForm(UserChangeForm):
     class Meta: #Se ocupa el modelo usuario para que django se encargue de las validaciones
         model=Usuarios
         fields=['first_name','last_name','username','email','phone','address']
-
-    def __init__(self, *args, **kwargs):
-        super(StalkersForm, self).__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control' 
+        
 
 #Se redefine el init para mostrar los datos de la instancia en los campos que no son del modelo usuario
 #kwargs['instance'] tiene la instancia del modelo en ese momento, en este caso usuario
@@ -72,8 +69,10 @@ class EditarForm(UserChangeForm):
         self.fields['especialidad'].initial=kwargs['instance'].Worker.especialidad
         self.fields['rubro'].initial=kwargs['instance'].Worker.rubro
         self.fields['certificado'].initial=kwargs['instance'].Worker.certificado
-        print(kwargs['instance'].Worker.zonas)
         self.fields['zonas'].initial=kwargs['instance'].Worker.zonas.all()
+        for visible in self.visible_fields():
+            if visible.name != 'password' and visible.name!='certificado':
+                visible.field.widget.attrs['class'] = 'form-control'
         
         
 
