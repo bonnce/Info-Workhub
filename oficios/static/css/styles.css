@@ -14,7 +14,7 @@
 Nuestros cambios
  */
 
-table tbody tr:hover{
+.table-hover tbody tr:hover{
   cursor: pointer;
 }
 
