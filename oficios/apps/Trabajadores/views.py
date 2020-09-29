@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404
+from django.template.loader import render_to_string
 from django.views import generic
 from django.urls import reverse_lazy
 from . import models
@@ -6,6 +7,8 @@ from . import forms
 from ..Usuarios.models import Usuarios
 from ..Comentarios.models import Comentarios
 from ..Zonas.models import Zonas
+from django.http import HttpResponse
+import json
 
 class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
@@ -20,6 +23,10 @@ class Registro(generic.CreateView):
 class Listar(generic.ListView):
     model = models.Trabajadores
     template_name = "Usuarios/Trabajadores/Listar.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['zonas'] = Zonas.objects.all()
+        return context
 
 #Se usa el modelo Usuario ya que es el modelo usado por el form y el modelo que se instancia
 #Para que django se ocupe de lo complicado
@@ -37,5 +44,23 @@ class MostrarPerfil(generic.DetailView):
         context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
         return context
 
+def ajaxTrabajador(request):
+    if request.is_ajax():
+        data={}
+        zona = request.GET.get('zona',None)
+        respuesta=[]
+        pk=[]
+        if zona.lower()=='todos':
+            trabajadores=models.Trabajadores.objects.all()
+        else:
+            trabajadores=Zonas.objects.get(nombre=zona).Opera.all()
+            
+        for x in trabajadores:
+            lista = [str(round(x.promedio))+'/5',str(x.usuario.first_name)+' '+str(x.usuario.last_name),x.rubro.nombre,x.especialidad,str(x.pk)]
 
+            respuesta.append(lista)
+
+        salida = {'datos':respuesta,'pk':pk}
+        data=json.dumps(salida)
+        return HttpResponse(data,'application/json')
 

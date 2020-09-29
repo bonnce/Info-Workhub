@@ -1,12 +1,12 @@
 $(document).ready( function () {
-    $('#TableT').DataTable({
+    var table = $('#TableT').DataTable({
         
         initComplete: function () {
             this.api().columns('.select-filter').every( function () {
                 var column = this;
                
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.footer()).empty() )
+                var select = $('<select class="form-control id="rubro"><option value="">Todos</option></select>')
+                    .appendTo( $('div.filtro>div.rubro') )
                     .on( 'change', function () {
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
@@ -36,6 +36,36 @@ $(document).ready( function () {
                 "sPrevious": "Anterior"
              },
              "sProcessing":"Procesando...",
-        }
-    }).order([0,'desc']).draw();
+        },
+        createdRow: function ( row, data, index ) {
+            if (data.length>4){
+                $(row).attr('data-url','/Trabajadores/MostrarPerfil/'+data[data.length-1])
+            }
+            
+         } 
+    });
+    table.order([ 0, 'desc' ] ).draw(false);
+
+    var zonaFiltro = function(){
+        option=$(this)
+
+        $.ajax({
+          data:{'zona':option.val()},
+          type:option.parent().parent().attr('method'),
+          url:option.parent().parent().attr('action'),
+          dataType:'json',
+          success:function(dato){
+            rows=dato['datos']
+            pk=dato['pk']
+            table.clear()
+            table.rows.add(rows);
+            table.draw();
+          }
+          
+        });
+    
+    
+      }
+      $('#zonas').on('change',zonaFiltro);
+
 } );
