@@ -2,11 +2,13 @@
 {% block title %}
 <title> <<< Registro >>> </title>
 {% endblock title %}
-{% block content %}
+{% block supercontent %}
 <br>
 <hr>
 <br>
 <br>
+<header class="registroHead">
+    </header>
 {%if form.errors %} 
     <div class="alert alert-primary" role="alert">
         {{form.errors}}
@@ -92,4 +94,4 @@
 </form>
 
 
-{% endblock content %}
+{% endblock %}

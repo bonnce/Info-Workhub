@@ -85,6 +85,7 @@
         </nav>
         {% endblock %}
         <!-- Masthead-->
+        {% block supercontent %}
         <header class="masthead">
             <div class="container h-100">
                 {% block content %} 
@@ -94,6 +95,7 @@
 
             </div>
         </header>
+        {% endblock %}
        
         <!--Modal de registro-->
         <div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="Registro" aria-hidden="true">
