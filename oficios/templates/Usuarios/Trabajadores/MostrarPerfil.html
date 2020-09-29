@@ -1,14 +1,16 @@
 {% extends 'Base.html' %}
 {% block title %}
+
 <title> Perfil {{object.usuario.first_name}} </title>
 {% endblock title %}
 
 {% block content %}
- <br>
- <br>       
+<header class="mostrarPerfilHeader">
+</header>
+    <div class="container h-100">
         <ul class="list-group">
             <div class="jumbotron"> 
-                <h2 class="display-4">Perfil: {{object.usuario.first_name}} , {{object.usuario.last_name}}</h2>
+                <h2 class="display-4">Perfil: {{object.usuario.last_name}}, {{object.usuario.first_name}}</h2>
                 <hr>
                 <br>    
                 <div class="form-row">
@@ -33,10 +35,18 @@
                     </div>
                         <br>
                         {%if object.certificado%}
-                            <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                            <button data-target=".bd-image-modal-lg" data-toggle="modal"><img  src="{{object.certificado.url}}" alt="" width="200" height="200" ></button>
                         {%else%}
                             <h4>   Sin Imagen....</h4>
+                                
                         {%endif%}
+                </div>
+                <div class="form-group col-md-4">
+                    <br>
+                    <div>
+                        
+                        <iframe src="https://maps.google.com/maps?q=@{{ coord }}&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                   </div>
                 </div>
             </div>
             
@@ -50,4 +60,20 @@
                 {% include 'Calificaciones/Calificar.html' %}
             {% endif %}
         </ul>
+    </div>
+
+    <div class="modal fade bd-image-modal-lg" id="ImagenModal" tabindex="-1" role="dialog" aria-labelledby="Registro" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{object.certificado.url}}" alt="" width="766" height="400">
+            </div>
+        </div>
+        </div>
+    </div>   
 {% endblock content %}
