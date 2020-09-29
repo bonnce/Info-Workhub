@@ -8,20 +8,6 @@ from ..Comentarios.models import Comentarios
 from ..Zonas.models import Zonas
 from geopy import geocoders, Nominatim #geopy obtener coordenadas a partir de una direccion
 
-# obtencion de coordenanadas
-locator = Nominatim(user_agent="myGeocoder")
-location = locator.geocode(u"Av. Chaco 1200".encode('utf-8'))
-#print (object.usuario.address)
-coordenadas=("{}, {}".format(location.latitude, location.longitude))
-print (coordenadas)
-
-def data_templates(request):
-     
-    return { 
-
-            'coordenadas': coordenadas
-    } 
-
 class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'
     model=models.Trabajadores
@@ -50,6 +36,9 @@ class MostrarPerfil(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
+        locator = Nominatim(user_agent="myGeocoder") #toma geopy
+        location = locator.geocode(str(context["object"].usuario.address).encode('utf-8'))#toma el domicilio
+        context['coord'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
         return context
 
 
