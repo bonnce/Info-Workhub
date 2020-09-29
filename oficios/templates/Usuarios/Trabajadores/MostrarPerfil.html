@@ -1,6 +1,6 @@
 {% extends 'Base.html' %}
 {% block title %}
-<title> Perfil {{uobject.usuario.first_name}} </title>
+<title> Perfil {{object.usuario.first_name}} </title>
 {% endblock title %}
 
 {% block content %}
@@ -8,7 +8,7 @@
  <br>       
         <ul class="list-group">
             <div class="jumbotron"> 
-                <h2 class="display-4">Perfil: {{object.usuario.first_name}} , {{object.usuario.last_name}} !!!</h2>
+                <h2 class="display-4">Perfil: {{object.usuario.first_name}} , {{object.usuario.last_name}}</h2>
                 <hr>
                 <br>    
                 <div class="form-row">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <li class="list-group-item active">Telefono: {{object.usuario.phone}}</li>
-                        <li class="list-group-item">Promedio: {{object.promedio|floatformat:2}}</li>
+                        <li class="list-group-item">Ranking: {{object.promedio|floatformat:"0" }}/5</li>
                     </div>
                     <div class="form-group col-md-4">
                         <li class="list-group-item active">Especialidad: {{object.especialidad}}</li>

@@ -27,3 +27,9 @@ class EditarForm(UserChangeForm):
     class Meta:
         model=Usuarios
         fields=['first_name','last_name','username','email','phone','address']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            if visible.name != 'password':
+                visible.field.widget.attrs['class'] = 'form-control'
