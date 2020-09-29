@@ -18,4 +18,21 @@ urlpatterns = [
     path('Calificaciones/',include('apps.Calificaciones.urls')),
     path('Login', auth.LoginView.as_view(template_name='Usuarios/Login.html'), name='login'),
     path('Logout', auth.LogoutView.as_view(template_name='Usuarios/Logout.html'), name='logout'),
+
+    path('reset_password/',
+        auth.PasswordResetView.as_view(template_name="Usuarios/Trabajadores/password_reset.html"), 
+        name="reset_password"),
+
+    path('reset_password_sent/',
+        auth.PasswordResetDoneView.as_view(template_name="Usuarios/Trabajadores/password_reset_sent.html"),
+        name="password_reset_done"),
+
+    path('reset/<uidb64>/<token>/',
+        auth.PasswordResetConfirmView.as_view(template_name="Usuarios/Trabajadores/password_reset_form.html"), 
+        name="password_reset_confirm"),
+
+    path('reset_password_complete/',
+        auth.PasswordResetCompleteView.as_view(template_name="Usuarios/Trabajadores/password_reset_done.html"), 
+        name="password_reset_complete"),
+
 ] +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
