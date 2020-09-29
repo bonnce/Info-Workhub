@@ -6,6 +6,21 @@ from . import forms
 from ..Usuarios.models import Usuarios
 from ..Comentarios.models import Comentarios
 from ..Zonas.models import Zonas
+from geopy import geocoders, Nominatim #geopy obtener coordenadas a partir de una direccion
+
+# obtencion de coordenanadas
+locator = Nominatim(user_agent="myGeocoder")
+location = locator.geocode(u"Av. Chaco 1200".encode('utf-8'))
+#print (object.usuario.address)
+coordenadas=("{}, {}".format(location.latitude, location.longitude))
+print (coordenadas)
+
+def data_templates(request):
+     
+    return { 
+
+            'coordenadas': coordenadas
+    } 
 
 class Registro(generic.CreateView):
     template_name='Usuarios/Registro.html'

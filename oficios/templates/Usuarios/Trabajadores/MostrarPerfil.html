@@ -1,5 +1,6 @@
 {% extends 'Base.html' %}
 {% block title %}
+
 <title> Perfil {{object.usuario.first_name}} </title>
 {% endblock title %}
 
@@ -34,9 +35,17 @@
                         <br>
                         {%if object.certificado%}
                             <img src="{{object.certificado.url}}" alt="" width="200" height="200">
+                            <h4>{{ coordenadas }}</h4>
                         {%else%}
                             <h4>   Sin Imagen....</h4>
+                                
                         {%endif%}
+                </div>
+                <div class="form-group col-md-4">
+                    <br>
+                    <div>
+                        <iframe src="https://maps.google.com/maps?q=@{{ coordenadas }}&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                   </div>
                 </div>
             </div>
             
