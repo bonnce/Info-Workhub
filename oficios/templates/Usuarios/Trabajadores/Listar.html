@@ -3,9 +3,10 @@
 <title> Trabajadores </title>
 {% endblock title %}
 {% block content %}
-<br><br>
-
-    <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.959); filter:alpha(opacity=80); opacity:0.8;">
+<body class="mastbody">
+    <div class="container h-100">
+    <br><br>
+    <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.959); filter:alpha(opacity=70); opacity:0.7;">
         <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">        
@@ -33,7 +34,7 @@
                             </tr>
                             {% empty %} 
             
-    <strong>No objects yet. </strong> 
+                            <strong>No objects yet. </strong> 
                             {% endfor %}
 
                         </tbody>  
@@ -49,8 +50,8 @@
                 </div>
         </div>  
     </div>
- 
-
+</div>
+</body>
 
 
 {% endblock content %}
