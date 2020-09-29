@@ -4,8 +4,9 @@
 {% endblock title %}
 
 {% block content %}
- <br>
- <br>       
+<header class="mostrarPerfilHeader">
+</header>
+    <div class="container h-100">
         <ul class="list-group">
             <div class="jumbotron"> 
                 <h2 class="display-4">Perfil: {{object.usuario.first_name}} , {{object.usuario.last_name}}</h2>
@@ -50,4 +51,5 @@
                 {% include 'Calificaciones/Calificar.html' %}
             {% endif %}
         </ul>
+    </div>
 {% endblock content %}

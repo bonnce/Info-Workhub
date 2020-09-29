@@ -655,6 +655,7 @@ pre code {
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #e3defbe3;
+    filter:alpha(opacity=70); opacity:0.7;
 }
 .container {
   width: 100%;
@@ -10242,7 +10243,7 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/electrician-1080586_1920.jpg");
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/casco.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10251,6 +10252,85 @@ header.masthead {
 header.masthead h1 {
   font-size: 2.25rem;
 }
+
+body.mastbody {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/ingeniera.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+body.mastbody h1 {
+  font-size: 2.25rem;
+}
+
+body.perfilBody {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/albañil.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+body.perfilBody h1 {
+  font-size: 2.25rem;
+}
+
+header.editPerfilHeader {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/albañil.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.editPerfilHeader h1 {
+  font-size: 2.25rem;
+}
+
+header.mostrarPerfilHeader {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/electricista.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.mostrarPerfilHeader h1 {
+  font-size: 2.25rem;
+}
+
+body.loginBody {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/trabajador4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+body.loginBody h1 {
+  font-size: 2.25rem;
+}
+
+body.registroBody {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/trabajador4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+body.registroBody h1 {
+  font-size: 2.25rem;
+}
+
 header.registroHead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
@@ -10263,6 +10343,20 @@ header.registroHead {
 header.registroHead h1 {
   font-size: 2.25rem;
 }
+
+header.perfilHead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(4, 0, 61, 0.8) 0%, rgba(54, 114, 228, 0.8) 100%), url("../assets/img/trabajador4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.perfilHead h1 {
+  font-size: 2.25rem;
+}
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
