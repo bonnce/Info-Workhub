@@ -40,7 +40,7 @@ Nuestros cambios
   font-size: 20px;
 }
 
-input[type="radio"] {
+input[type="radio"].star {
   display: none;
 }
 
@@ -58,7 +58,7 @@ label:hover~label {
   color: rgb(47, 0, 255);
 }
 
-input[type="radio"]:checked~label {
+input[type="radio"].star:checked~label {
   color: orange;
 }
 .my-custom-scrollbar {
@@ -78,43 +78,43 @@ Template generico
     display: flex;
     flex-direction: row-reverse;
 }
-.valoracion div>label {
+.valoracion div>label.star {
     background-color: initial;
     border: 0;
     color: var(--color-inactivo);
     transition: 1s all;
 }
-.valoracion div>label:hover {
+.valoracion div>label.star:hover {
     cursor: pointer;
     color: var(--color-hover);
     transform: rotate(180deg);
 }
-.valoracion div>input[type=radio]:checked + label {
+.valoracion div>input[type=radio].star:checked + label.star {
   color: var(--color-checked);
   transform: rotate(360deg);
 }
-div:nth-child(1):hover ~ div>label:nth-child(2),
-div:nth-child(1).check ~ div>label:nth-child(2) {
+div:nth-child(1):hover ~ div>label.star:nth-child(2),
+div:nth-child(1).check ~ div>label.star:nth-child(2) {
     color: var(--color-hover);
     transform: rotate(180deg);
 }
-div:nth-child(2):hover ~ div>label:nth-child(2),
-div:nth-child(2).check ~ div>label:nth-child(2){
+div:nth-child(2):hover ~ div>label.star:nth-child(2),
+div:nth-child(2).check ~ div>label.star:nth-child(2){
     color: var(--color-hover);
     transform: rotate(180deg);
 }
-div:nth-child(3):hover ~ div>label:nth-child(2),
-div:nth-child(3).check ~ div>label:nth-child(2) {
+div:nth-child(3):hover ~ div>label.star:nth-child(2),
+div:nth-child(3).check ~ div>label.star:nth-child(2) {
     color: var(--color-hover);
     transform: rotate(180deg);
 }
-div:nth-child(4):hover ~ div>label:nth-child(2),
-div:nth-child(4).check ~ div>label:nth-child(2) {
+div:nth-child(4):hover ~ div>label.star:nth-child(2),
+div:nth-child(4).check ~ div>label.star:nth-child(2) {
     color: var(--color-hover);
     transform: rotate(180deg);
 }
-div:nth-child(5):hover ~ div>label:nth-child(2),
-div:nth-child(5).check ~ div>label:nth-child(2) {
+div:nth-child(5):hover ~ div>label.star:nth-child(2),
+div:nth-child(5).check ~ div>label.star:nth-child(2) {
     color: var(--color-hover);
     transform: rotate(180deg);
 }

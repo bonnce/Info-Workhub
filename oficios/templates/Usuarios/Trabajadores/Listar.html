@@ -8,7 +8,35 @@
     <div class="container" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.959); filter:alpha(opacity=80); opacity:0.8;">
         <div class="row">
                 <div class="col-lg-12">
-                    <div class="table-responsive">        
+                    <div class="table-responsive"> 
+                        <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="filtro row">
+                                <div class="col-sm-12 col-md-6 rubro">
+                                    <label for="rubro">Filtre por Rubros</label>
+    
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <form method="GET" id="filtroZona" action="{% url 'Trabajadores:filtroZona' %}">
+                                        <div class="form-group">
+                                            <label for="zonas">Filtre por zonas</label>
+                                            <select class="form-control" id="zonas">
+                                              <option>Todos</option>
+                                              {% for z in zonas %}
+                                                <option>{{z}}</option>
+                                                
+                                              {% endfor %}
+                                            </select>
+                                          </div>
+                                          
+                                 
+                                      </form>
+                                </div>
+    
+                            </div> 
+                        </div>   
+                        
+                        
+                          <br>
                         <table id="TableT" class="display table table-hover table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -20,30 +48,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in object_list %} 
-                            <tr data-url="{% url 'Trabajadores:mostrarPerfil' object.pk %}">
-                            <td>{{ object.promedio|floatformat:"0" }}/5</td>
-                            <td>{{ object.usuario.first_name}} {{object.usuario.last_name }}</td>
-
-                            <td>{{ object.rubro }}</td>
-                            <td>{{object.especialidad}}</td>
-                            
-                        <!-- If objet_list is empty  -->
-                            
-                            </tr>
-                            {% empty %} 
-            
-    <strong>No objects yet. </strong> 
-                            {% endfor %}
+                            {% include "Usuarios/Trabajadores/Listar_table.html" %}
 
                         </tbody>  
-                        <tfoot>
-                            <th ></th>
-                            <th > </th>
-                                <th >Rubro</th>
-                                <th ></th>
-
-                        </tfoot>      
+                             
                     </table>                  
                     </div>
                 </div>

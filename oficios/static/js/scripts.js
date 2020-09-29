@@ -3,7 +3,9 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
     */
+
     (function($) {
+      
   //REGISTRO
   var go_to=function(){
     window.location.href=$(this).attr('data-url')
@@ -15,9 +17,11 @@
     $( "input:checked" ).parent().addClass('check')
     $( "input:not(:checked)" ).parent().removeClass('check')
   }
-  $('input[type=radio]').on('click',check);
+  $('input[type=radio].star').on('click',check);
   "use strict"; // Start of use strict
   $('#TableT tbody').on('click', 'tr', go_to);
+  //filter zona
+  
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
