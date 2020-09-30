@@ -10428,7 +10428,7 @@ header.perfilHead h1 {
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal {
+.modal-image {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -10443,7 +10443,7 @@ header.perfilHead h1 {
 }
 
 /* Modal Content (Image) */
-.modal-content {
+.modal-image-content {
   margin: auto;
   display: block;
   width: 80%;
@@ -10463,7 +10463,7 @@ header.perfilHead h1 {
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-image-content, #caption {
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -10493,7 +10493,7 @@ header.perfilHead h1 {
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-  .modal-content {
+  .modal-image-content {
     width: 100%;
   }
 }

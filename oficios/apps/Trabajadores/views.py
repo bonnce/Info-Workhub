@@ -48,12 +48,12 @@ class MostrarPerfil(generic.DetailView):
         if location:
             context['coord'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
         else:
-            zona=str(context["object"].zonas.all()[0])
-
-            location = locator.geocode(zona.encode('utf-8'))
             context['mal']='Direccion no encontrada'
-            if location:
-               context['coordZona'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
+            zona=str(context["object"].zonas.all())
+            if zona:
+                location = locator.geocode(zona[0].encode('utf-8'))                
+                if location:
+                    context['coordZona'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
 
         return context
 
