@@ -3,6 +3,7 @@ from . import views
 from django.contrib import admin
 from django.contrib.auth import views as auth
 from django.conf.urls.static import static
+from django.urls import reverse_lazy
 from django.conf import settings
 
 #URL PRINCIPAL
@@ -19,6 +20,8 @@ urlpatterns = [
     path('Login', auth.LoginView.as_view(template_name='Usuarios/Login.html'), name='login'),
     path('Logout', auth.LogoutView.as_view(template_name='Usuarios/Logout.html'), name='logout'),
 
+    path('password', auth.PasswordChangeView.as_view(template_name='Usuarios/password.html'), name='password_change'),
+    path('passwordDone', auth.PasswordChangeDoneView.as_view(template_name='Usuarios/passwordDone.html'), name='password_change_done'),
     path('reset_password/',
         auth.PasswordResetView.as_view(template_name="Usuarios/password_reset.html"), 
         name="reset_password"),

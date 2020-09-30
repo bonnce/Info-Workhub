@@ -4,9 +4,12 @@
 <title> Perfil </title>
 {% endblock title %}
 {% block content %}
-<body class="perfilBody">
-    <div class="container h-100">   
-        <div class="container emp-profile">
+<header class="perfilhead"> </header>
+<br>
+<br>
+<br>
+    <div class="container">   
+
                 <div class="row text-center">
                     
                         {% if user.Worker.certificado %}
@@ -119,7 +122,6 @@
             </form> 
             </div>
             </div>
-        </div>  
+
     </div>
-</body>
 {% endblock content %}

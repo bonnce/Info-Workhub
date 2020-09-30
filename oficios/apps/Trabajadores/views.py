@@ -45,7 +45,16 @@ class MostrarPerfil(generic.DetailView):
         context['comentario'] = Comentarios.objects.filter(trabajador=context['object'])
         locator = Nominatim(user_agent="myGeocoder") #toma geopy
         location = locator.geocode(str(context["object"].usuario.address).encode('utf-8'))#toma el domicilio
-        context['coord'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
+        if location:
+            context['coord'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
+        else:
+            zona=str(context["object"].zonas.all()[0])
+
+            location = locator.geocode(zona.encode('utf-8'))
+            context['mal']='Direccion no encontrada'
+            if location:
+               context['coordZona'] = ("{}, {}".format(location.latitude, location.longitude))#transforma direccion en coordernadas
+
         return context
 
 def ajaxTrabajador(request):
