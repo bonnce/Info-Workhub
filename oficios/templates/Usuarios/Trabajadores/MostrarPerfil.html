@@ -15,52 +15,95 @@
                 <br>    
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <li class="list-group-item active">Nombre: {{object.usuario.first_name}}</li>
-                        <li class="list-group-item">Apellido: {{object.usuario.last_name}}</li>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <li class="list-group-item active">Email: {{object.usuario.email}}</li>
-                        <li class="list-group-item">Direccion: {{object.usuario.address}}</li>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <li class="list-group-item active">Telefono: {{object.usuario.phone}}</li>
-                        <li class="list-group-item">Ranking: {{object.promedio|floatformat:"0" }}/5</li>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <li class="list-group-item active">Especialidad: {{object.especialidad}}</li>
-                        <li class="list-group-item">Rubro: {{object.rubro}}</li>
-                        {% for z in object.zonas.all %}
-                        <li class="list-group-item active">{{z}}</li>
-                        {% endfor %}
-                    </div>
-                        <br>
-                        {%if object.certificado%}
-                            <button data-target=".bd-image-modal-lg" data-toggle="modal"><img  src="{{object.certificado.url}}" alt="" width="200" height="200" ></button>
-                        {%else%}
-                            <h4>   Sin Imagen....</h4>
-                                
-                        {%endif%}
-                </div>
-                <div class="form-group col-md-4">
-                    <br>
-                    <div>
                         
-                        <iframe src="https://maps.google.com/maps?q=@{{ coord }}&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                   </div>
+                        
+                        
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                              Datos personales
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Nombre: {{object.usuario.first_name}}</li>
+                              <li class="list-group-item">Nombre: {{object.usuario.last_name}}</li>
+                              <li class="list-group-item">Especialidad: {{object.especialidad}}</li>
+                            </ul>
+                          </div>
+    
+                    </div>
+                    <div class="form-group col-md-4">
+                        
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                              Datos contacto
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Telefono: {{object.usuario.phone}}</li>
+                              <li class="list-group-item">Email: {{object.usuario.email}}</li>
+                              <li class="list-group-item">Direccion: {{object.usuario.address}}</li>
+                            </ul>
+                          </div>
+                        
+                    </div>
+                    <div class="form-group col-md-4">
+                  
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                              Puntaje/Rubro/Zonas
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Ranking: {{object.promedio|floatformat:"0" }}/5</li>
+                              <li class="list-group-item">Rubro: {{object.rubro}}</li>
+                              {% for z in object.zonas.all %}
+                                <li class="list-group-item">{{z}}</li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                    </div>
+
+                    <div class="form-group col-md-4">    
+                            {%if object.certificado %}
+                                <button data-target=".bd-image-modal-lg" data-toggle="modal"><img  src="{{object.certificado.url}}" alt="" width="270" height="270" ></button>
+                            {%else%}
+                                <h4>   Sin Imagen....</h4>
+                                    
+                            {%endif%}
+                    </div>          
+        
+                        <div class="form-group col-md-4">
+                             <iframe src="https://maps.google.com/maps?q=@{{ coord }}&output=embed" width="280" height="280" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
                 </div>
             </div>
-            
+            <hr>
+            <h3>Comentarios de los usuarios...</h3>
             {% include 'Usuarios/Trabajadores/Mostrar_Comentarios.html' %}
             {% if not user.is_authenticated %}
             <P>PARA CALIFICAR Y COMENTAR DEBE ESTAR LOGUEADO</P>
             <a href="{% url 'Stalkers:registro' %}" class="btn btn-warning">Register</a>
             <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
             {% else %}
-                {% include 'Comentarios/Comentar.html' %}
-                {% include 'Calificaciones/Calificar.html' %}
+                
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      {% include 'Comentarios/Comentar.html' %}
+                    </div>
+                    <div class="col-2">
+                      
+                    </div>
+                    <div class="col-3">
+                      <br><br>
+                      <label for="coment">Califica con estrellas !!!!</label>
+                      <center>{% include 'Calificaciones/Calificar.html' %}</center>
+                    </div>
+                  </div>
+                </div>
+              
             {% endif %}
         </ul>
-    </div>
+        <br><br><br>
+      </div>
+
 
     <div class="modal fade bd-image-modal-lg" id="ImagenModal" tabindex="-1" role="dialog" aria-labelledby="Registro" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
