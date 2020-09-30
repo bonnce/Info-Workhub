@@ -86,10 +86,9 @@
                 <div class="form-row">
                     <div class="form-group col-md-4" style="width: 18rem;">    
                             {%if object.certificado %}
-                            <img id="myImg" src="{{object.certificado.url}}" alt="">
+                            <img id="myImg" src="{{object.certificado.url}}" alt="" style="max-width: 290px;">
                             {%else%}
                                 <h4>   Sin Imagen....</h4>
-                                    
                             {%endif%}
                     </div>          
                       {% if coord %}
@@ -148,13 +147,13 @@
 
 
     <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal-image">
 
   <!-- The Close Button -->
   <span class="close">&times;</span>
 
   <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01">
+  <img class="modal-image-content" id="img01">
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
