@@ -77,7 +77,9 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         {{ form.password }}
-                        <p class="help">{{ form.password.help_text|safe }}</p>
+                        <p class="help">El sistema no almacena las contraseñas originales 
+                            por lo cual no es posible visualizar la contraseña de este usuario, 
+                            pero puede modificarla usando <a href="{% url 'password_change' %}">este formulario</a>.</p>
                 </div>
                 </div>
                 
